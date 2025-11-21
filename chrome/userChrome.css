@@ -1,0 +1,141 @@
+/* ===========================================
+   COSMIC Firefox Theme (userChrome.css)
+   - global roundness slider
+   - global accent color
+   - COSMIC dark surfaces
+=========================================== */
+
+/* ========== COSMIC VARIABLES ========== */
+/* Change these two lines to match your COSMIC desktop */
+
+:root {
+    --cosmic-radius: 12px;        /* Global UI roundness */
+    --cosmic-accent: #4a86cf;     /* Accent color */
+
+    --cosmic-bg: #2b2b2b;         /* Main background */
+    --cosmic-bg-dark: #1f1f1f;
+    --cosmic-bg-light: #3a3a3a;
+    --cosmic-border: #3d3d3d;
+
+    --cosmic-text: #ffffff;
+    --cosmic-text-dim: #c4c4c4;
+}
+
+/* ===========================================
+   General Surfaces
+=========================================== */
+
+#navigator-toolbox,
+#TabsToolbar,
+#nav-bar {
+    background: var(--cosmic-bg) !important;
+    color: var(--cosmic-text) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove tab separators */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+    border: none !important;
+}
+
+/* ===========================================
+   Tabs
+=========================================== */
+
+/* Tab padding for cleaner spacing */
+.tabbrowser-tab {
+    padding: 4px 10px !important;
+    margin: 4px 2px !important;
+}
+
+/* Background of tabs */
+.tab-background {
+    background: var(--cosmic-bg) !important;
+    border-radius: var(--cosmic-radius) !important;
+    border: 1px solid var(--cosmic-border) !important;
+}
+
+/* Selected tab */
+.tabbrowser-tab[selected="true"] .tab-background {
+    background: var(--cosmic-bg-light) !important;
+    border-color: var(--cosmic-accent) !important;
+}
+
+.tabbrowser-tab[selected="true"] {
+    color: var(--cosmic-text) !important;
+}
+.tabbrowser-tab:not([selected="true"]) {
+    color: var(--cosmic-text-dim) !important;
+}
+
+/* Hover effect */
+.tabbrowser-tab:hover .tab-background {
+    background-color: var(--cosmic-bg-light) !important;
+}
+
+/* ===========================================
+   URL Bar & Search Bar
+=========================================== */
+
+#urlbar,
+#searchbar {
+    border-radius: var(--cosmic-radius) !important;
+    background-color: var(--cosmic-bg-light) !important;
+    border: 1px solid var(--cosmic-border) !important;
+}
+
+/* Focused state */
+#urlbar[focused="true"] {
+    border-color: var(--cosmic-accent) !important;
+    background-color: var(--cosmic-bg-light) !important;
+}
+
+#urlbar-container {
+    margin-inline: 6px !important;
+}
+
+/* ===========================================
+   Toolbar Buttons
+=========================================== */
+
+.toolbarbutton-1 {
+    border-radius: var(--cosmic-radius) !important;
+    padding: 6px !important;
+}
+
+.toolbarbutton-1:hover {
+    background-color: var(--cosmic-bg-light) !important;
+}
+
+.toolbarbutton-1[open] {
+    background-color: color-mix(in srgb, var(--cosmic-accent) 30%, transparent) !important;
+}
+
+/* ===========================================
+   Menus, Panels & Popups
+=========================================== */
+
+panelview,
+panelmultiview,
+panel,
+menupopup {
+    background: var(--cosmic-bg) !important;
+    color: var(--cosmic-text) !important;
+    border: 1px solid var(--cosmic-border) !important;
+    border-radius: var(--cosmic-radius) !important;
+}
+
+/* Remove white flash when opening menus */
+menupopup {
+    -moz-appearance: none !important;
+}
+
+/* ===========================================
+   Optional: Hide title bar for cleaner look
+=========================================== */
+
+#titlebar {
+    appearance: none !important;
+}
