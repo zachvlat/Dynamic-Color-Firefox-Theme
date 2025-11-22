@@ -1,20 +1,18 @@
 /* ===========================================
-   COSMIC Firefox Theme (userChrome.css)
-   - global roundness slider
-   - global accent color
-   - COSMIC dark surfaces
+   COSMIC VARIABLES
 =========================================== */
 
-/* ========== COSMIC VARIABLES ========== */
-/* Change these two lines to match your COSMIC desktop */
-
 :root {
-    --cosmic-radius: 22px;        /* Global UI roundness */
-    --cosmic-accent: AccentColor;     /* Accent color */
+    --cosmic-radius: 22px;
+    --cosmic-accent: AccentColor;
 
-    --cosmic-bg: color-mix(in srgb, AccentColor 20%, black);         /* Main background  */
+    --cosmic-bg: color-mix(in srgb, AccentColor 20%, black);
     --cosmic-bg-dark: CanvasText;
     --cosmic-bg-light: Canvas;
+
+    /* Slightly darker version for focused tab */
+    --cosmic-tab-selected: color-mix(in srgb, var(--cosmic-bg) 80%, black);
+
     --cosmic-border: AccentColor;
 
     --cosmic-text: CanvasText;
@@ -22,7 +20,7 @@
 }
 
 /* ===========================================
-   General Surfaces
+   TAB BAR, GENERAL SURFACES
 =========================================== */
 
 #navigator-toolbox,
@@ -34,49 +32,55 @@
     box-shadow: none !important;
 }
 
-/* Remove tab separators */
+/* Remove default separators */
 .tabbrowser-tab::after,
 .tabbrowser-tab::before {
     border: none !important;
 }
 
 /* ===========================================
-   Tabs
+   TABS (FULL REWRITE)
 =========================================== */
 
-/* Tab padding for cleaner spacing */
+/* Base tab container */
 .tabbrowser-tab {
     padding: 2px 2px !important;
-    margin: 0px 0px !important;
+    margin: 0 !important;
+    color: var(--cosmic-text-dim) !important;
 }
 
-/* Background of tabs */
+/* Base background for all tab surfaces */
 .tab-background {
     background: var(--cosmic-bg) !important;
     border-radius: var(--cosmic-radius) !important;
     border: 1px solid var(--cosmic-border) !important;
 }
 
-/* Selected tab */
+/* -------------------------------------------------------
+   FOCUSED TAB
+   → Same style as unfocused but slightly darker
+------------------------------------------------------- */
 .tabbrowser-tab[selected="true"] .tab-background {
-    background: var(--cosmic-bg-light) !important;
-    border-color: var(--cosmic-accent) !important;
+    background: var(--cosmic-tab-selected) !important;
+    border-color: var(--cosmic-border) !important;
 }
 
 .tabbrowser-tab[selected="true"] {
     color: var(--cosmic-text) !important;
 }
-.tabbrowser-tab:not([selected="true"]) {
-    color: var(--cosmic-text-dim) !important;
-}
 
-/* Hover effect */
-.tabbrowser-tab:hover .tab-background {
-    background-color: var(--cosmic-bg-light) !important;
+/* -------------------------------------------------------
+   HOVER TAB
+   → Mild brighten using color-mix,
+     but still consistent with COSMIC surfaces
+------------------------------------------------------- */
+
+.tabbrowser-tab:not([selected="true"]):hover .tab-background {
+    background: color-mix(in srgb, var(--cosmic-bg) 70%, white) !important;
 }
 
 /* ===========================================
-   URL Bar & Search Bar - IMPROVED
+   URL BAR & SEARCH BAR (unchanged except formatting)
 =========================================== */
 
 #urlbar-background,
@@ -86,18 +90,15 @@
     border: 1px solid var(--cosmic-border) !important;
 }
 
-/* URL bar container */
 #urlbar-container {
     margin-inline: 6px !important;
 }
 
-/* URL bar input field */
 #urlbar-input-container {
     border-radius: var(--cosmic-radius) !important;
     background: transparent !important;
 }
 
-/* Focused state - more comprehensive */
 #urlbar[focused="true"] #urlbar-background,
 #urlbar[focused="true"] {
     border-color: var(--cosmic-accent) !important;
@@ -105,7 +106,6 @@
     border-radius: var(--cosmic-radius) !important;
 }
 
-/* Ensure URL bar results popup also has roundness */
 .urlbarView {
     border-radius: var(--cosmic-radius) !important;
     margin-top: 4px !important;
@@ -113,7 +113,7 @@
 }
 
 /* ===========================================
-   Bookmark Bar - UPDATED
+   Bookmark Bar
 =========================================== */
 
 #PersonalToolbar {
@@ -124,7 +124,6 @@
     padding: 4px 0 !important;
 }
 
-/* Bookmark items */
 #PersonalToolbar .toolbarbutton-1 {
     color: var(--cosmic-text) !important;
     border-radius: var(--cosmic-radius) !important;
@@ -132,13 +131,11 @@
     margin: 0 2px !important;
 }
 
-/* Bookmark hover effect */
 #PersonalToolbar .toolbarbutton-1:hover {
     background-color: var(--cosmic-bg-light) !important;
     color: var(--cosmic-text) !important;
 }
 
-/* Bookmark folder menus */
 #PlacesToolbarItems menupopup {
     background: var(--cosmic-bg) !important;
     border: 1px solid var(--cosmic-border) !important;
@@ -163,7 +160,7 @@
 }
 
 /* ===========================================
-   Menus, Panels & Popups
+   Menus, Panels, Popups
 =========================================== */
 
 panelview,
@@ -176,31 +173,23 @@ menupopup {
     border-radius: var(--cosmic-radius) !important;
 }
 
-/* Remove white flash when opening menus */
 menupopup {
     -moz-appearance: none !important;
 }
 
 /* ===========================================
-   Optional: Hide title bar for cleaner look
+   Misc / Optional
 =========================================== */
 
 #titlebar {
     appearance: none !important;
 }
 
-/* ===========================================
-   Additional elements for consistent roundness
-=========================================== */
-
-/* Download button panel */
 #downloadsPanel {
     border-radius: var(--cosmic-radius) !important;
 }
 
-/* Library window */
 #libraryWindow,
 #bookmarksPanel {
     border-radius: var(--cosmic-radius) !important;
 }
-
