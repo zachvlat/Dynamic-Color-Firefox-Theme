@@ -3,6 +3,7 @@
     --accent-mixed: color-mix(in srgb, AccentColor 35%, black);
     --canvas-text: CanvasText;
     --canvas: Canvas;
+	--radius: 22px;
 }
 
 /* Apply the theme colors */
@@ -18,10 +19,16 @@ background-color: var(--accent-mixed) !important;
 .tab-background[selected] {
     background-color: var(--accent-color) !important;
     color: var(--canvas-text) !important;
+	border-radius: var(--radius) !important;
 }
 
 .tab-background:not([selected]) {
     background-color: var(--accent-mixed) !important;
+}
+
+.tabbrowser-tab {
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
 }
 
 .tab-line[selected] {
@@ -68,4 +75,3 @@ menu, menuitem {
 menu:hover, menuitem:hover {
     background-color: var(--accent-mixed) !important;
 }
-
