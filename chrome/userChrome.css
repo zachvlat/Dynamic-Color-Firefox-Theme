@@ -1,12 +1,37 @@
 /* =======================================================
-   Root Variables
+   Root Variables (ALL COLORS LIVE HERE)
    ======================================================= */
 :root {
-    --accent-color: AccentColor;
-    --accent-mixed: color-mix(in srgb, AccentColor 30%, black);
-    --accent-mixed-light: color-mix(in srgb, AccentColor 60%, white);
-    --canvas-text: CanvasText;
-    --canvas: Canvas;
+    /* Base system colors */
+    --color-accent: AccentColor;
+    --color-canvas: Canvas;
+    --color-text: CanvasText;
+
+    /* Derived accent colors */
+    --color-accent-dark: color-mix(in srgb, var(--color-accent) 40%, black);
+    --color-accent-darker: color-mix(in srgb, var(--color-accent) 30%, black);
+    --color-accent-light: color-mix(in srgb, var(--color-accent) 60%, white);
+
+    /* UI surfaces */
+    --color-navbar-bg: var(--color-accent-dark);
+    --color-toolbar-bg: var(--color-accent-darker);
+    --color-toolbar-hover: var(--color-accent);
+    --color-toolbar-header: var(--color-accent-light);
+
+    --color-tab-bg: var(--color-accent-darker);
+    --color-tab-selected-bg: var(--color-accent);
+
+    --color-urlbar-bg: var(--color-canvas);
+    --color-urlbar-focused-bg: var(--color-accent-darker);
+
+    --color-panel-bg: var(--color-accent-darker);
+    --color-panel-hover: var(--color-accent);
+    --color-panel-separator: var(--color-accent-light);
+
+    --color-addon-bg: var(--color-accent-light);
+    --color-addon-hover: var(--color-accent);
+
+    /* Radius */
     --radius: 22px;
 }
 
@@ -14,51 +39,51 @@
    Navigation Bar
    ======================================================= */
 #nav-bar {
-    background-color: var(--accent-mixed) !important;
-    color: var(--canvas-text) !important;
+    background-color: var(--color-navbar-bg) !important;
+    color: var(--color-text) !important;
 }
 
 /* =======================================================
-   Tabs Toolbar
+   Personal Toolbar (Bookmarks Bar)
    ======================================================= */
-#TabsToolbar {
-    background-color: var(--accent-mixed) !important;
+#PersonalToolbar {
+    background-color: var(--color-navbar-bg) !important;
+    color: var(--color-text) !important;
 }
 
-/* --- Individual Tabs --- */
+/* =======================================================
+   Tab Bar
+   ======================================================= */
+#TabsToolbar {
+    background-color: var(--color-tab-bg) !important;
+    color: var(--color-text) !important;
+}
+
+/* Individual Tabs */
 .tabbrowser-tab {
     border-radius: var(--radius) !important;
     overflow: hidden !important;
 }
 
-/* --- Tab Backgrounds --- */
+/* Tab Backgrounds */
 .tab-background[selected] {
-    background-color: var(--accent-color) !important;
-    color: var(--canvas-text) !important;
+    background-color: var(--color-tab-selected-bg) !important;
+    color: var(--color-text) !important;
     border-radius: var(--radius) !important;
 }
 
 .tab-background:not([selected]) {
-    background-color: var(--accent-mixed) !important;
+    background-color: var(--color-tab-bg) !important;
 }
 
-/* --- Selected Tab Line --- */
+/* Selected Tab Line */
 .tab-line[selected] {
-    background-color: var(--accent-color) !important;
+    background-color: var(--color-tab-selected-bg) !important;
 }
 
 /* =======================================================
    URL Bar
    ======================================================= */
-#urlbar-background {
-    background-color: var(--canvas) !important;
-    color: var(--canvas-text) !important;
-}
-
-#urlbar-input {
-    color: var(--canvas-text) !important;
-}
-
 #urlbar,
 #urlbar-container {
     border-radius: var(--radius) !important;
@@ -67,36 +92,58 @@
 }
 
 #urlbar-background {
+    background-color: var(--color-urlbar-bg) !important;
+    color: var(--color-text) !important;
     border-radius: var(--radius) !important;
-    overflow: hidden !important;
+}
+
+#urlbar-input {
+    color: var(--color-text) !important;
+}
+
+#urlbar:is([focused], [focus-within]) #urlbar-background,
+#urlbar:is([focused], [focus-within]) .urlbar-input-container {
+    background-color: var(--color-urlbar-focused-bg) !important;
+    color: var(--color-text) !important;
 }
 
 toolbarspring {
     display: none !important;
 }
 
-#main-window:not([privatebrowsingmode]) :is(#urlbar-search-mode-indicator,#urlbar-background,#searchbar) {
-  background-color: var(--accent-mixed-light) !important;
+#main-window:not([privatebrowsingmode])
+:is(#urlbar-search-mode-indicator, #urlbar-background) {
+    background-color: var(--color-accent-light) !important;
 }
 
-:root[lwtheme]:not([privatebrowsingmode]) #searchbar,
-:root[lwtheme]:not([privatebrowsingmode]) #urlbar :is(#urlbar-input,#urlbar-scheme,#page-action-buttons,#identity-icon-box,#urlbar-input-container,.urlbar-input-container,#urlbar-background,.urlbarView),
-:root[lwtheme]:not(:-moz-lwtheme-brighttext):not([privatebrowsingmode]) #urlbar .urlbarView-row:not([type=tip], [type=dynamic])[selected] > .urlbarView-row-inner,
-:root[lwtheme]:not(:-moz-lwtheme-brighttext):not([privatebrowsingmode]) #urlbar .urlbarView-row-inner[selected] {
-  color: var(--accent-mixed-light) !important;
-  fill: var(--accent-mixed-light) !important;
+/* Search Bar */
+#searchbar .searchbar-textbox {
+    background-color: var(--color-toolbar-bg) !important;
+    color: var(--color-text) !important;
+    border-radius: var(--radius) !important;
 }
 
-@media (-moz-content-prefers-color-scheme: light), (prefers-color-scheme: light),
-        (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
-    :root[lwtheme]:not([privatebrowsingmode]) #urlbar .urlbarView-row:not([type=tip], [type=dynamic])[selected] > .urlbarView-row-inner,
-    :root[lwtheme]:not([privatebrowsingmode]) #urlbar .urlbarView-row-inner[selected] {
-      color: var(--accent-mixed-light) !important;
-      fill: var(--accent-mixed-light) !important;
-    }
-    #main-window:not([privatebrowsingmode]) :is(#urlbar,#urlbar-search-mode-indicator,#urlbar-background,#searchbar) {
-      color: var(--accent-mixed-light) !important;
-      fill: var(--accent-mixed-light) !important;
+#searchbar:is([focused]) .searchbar-textbox {
+    background-color: var(--color-accent) !important;
+}
+
+/* =======================================================
+   URL Bar Results
+   ======================================================= */
+:root[lwtheme]:not([privatebrowsingmode])
+#urlbar .urlbarView-row-inner[selected] {
+    color: var(--color-accent-light) !important;
+    fill: var(--color-accent-light) !important;
+}
+
+@media (-moz-content-prefers-color-scheme: light),
+       (prefers-color-scheme: light),
+       (-moz-toolbar-prefers-color-scheme: dark),
+       (prefers-color-scheme: dark) {
+    #main-window:not([privatebrowsingmode])
+    :is(#urlbar, #urlbar-background, #searchbar) {
+        color: var(--color-accent-light) !important;
+        fill: var(--color-accent-light) !important;
     }
 }
 
@@ -104,26 +151,129 @@ toolbarspring {
    Browser Content Area
    ======================================================= */
 .browser-container {
-    background-color: var(--canvas) !important;
-    color: var(--canvas-text) !important;
+    background-color: var(--color-canvas) !important;
+    color: var(--color-text) !important;
 }
 
 /* =======================================================
    Sidebar
    ======================================================= */
 #sidebar-box {
-    background-color: var(--canvas) !important;
-    color: var(--canvas-text) !important;
+    background-color: var(--color-canvas) !important;
+    color: var(--color-text) !important;
 }
 
 #sidebar-search-container {
-    background-color: var(--accent-mixed) !important;
+    background-color: var(--color-toolbar-bg) !important;
 }
 
 /* =======================================================
-   Toolbar Elements
+   Toolbars
    ======================================================= */
 toolbar {
-    background-color: var(--accent-mixed) !important;
-    color: var(--canvas-text) !important;
+    background-color: var(--color-toolbar-bg) !important;
+    color: var(--color-text) !important;
+}
+
+/* =======================================================
+   App Menu (Hamburger Menu)
+   ======================================================= */
+#appMenu-popup,
+#appMenu-popup .panel-subview-body {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#appMenu-popup toolbarbutton {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+#appMenu-popup toolbarbutton:hover {
+    background-color: var(--color-panel-hover) !important;
+}
+
+#appMenu-popup .panel-subview-header {
+    background-color: var(--color-toolbar-header) !important;
+}
+
+/* =======================================================
+   Context Menus
+   ======================================================= */
+menupopup,
+panel[type="arrow"],
+#content-area-contextmenu {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+menupopup menuitem,
+panel[type="arrow"] toolbarbutton {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+menupopup menuitem:hover,
+panel[type="arrow"] toolbarbutton:hover {
+    background-color: var(--color-panel-hover) !important;
+}
+
+.menuseparator,
+.panel-separator {
+    border-color: var(--color-panel-separator) !important;
+}
+
+/* =======================================================
+   Add-ons Manager (about:addons)
+   ======================================================= */
+#addons-page {
+    background-color: var(--color-canvas) !important;
+    color: var(--color-text) !important;
+}
+
+#addons-page .page-header,
+#addons-page .sidebar {
+    background-color: var(--color-toolbar-bg) !important;
+}
+
+#addons-page .category,
+#addons-page .card,
+#addons-page .addon-detail {
+    background-color: var(--color-addon-bg) !important;
+}
+
+#addons-page .category[selected],
+#addons-page .category:hover,
+#addons-page .card:hover {
+    background-color: var(--color-addon-hover) !important;
+}
+
+#addons-page button,
+#addons-page .more-options-button {
+    background-color: var(--color-toolbar-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#addons-page button:hover,
+#addons-page .more-options-button:hover {
+    background-color: var(--color-addon-hover) !important;
+}
+
+/* =======================================================
+   Unified Extensions Panel
+   ======================================================= */
+#unified-extensions-view,
+#unified-extensions-panel {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#unified-extensions-view toolbarbutton,
+#unified-extensions-panel .unified-extensions-item {
+    background-color: transparent !important;
+}
+
+#unified-extensions-view toolbarbutton:hover,
+#unified-extensions-panel .unified-extensions-item:hover {
+    background-color: var(--color-panel-hover) !important;
 }
