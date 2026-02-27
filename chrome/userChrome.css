@@ -8,8 +8,8 @@
     --color-text: CanvasText;
 
     /* Derived accent colors */
-    --color-accent-dark: color-mix(in srgb, var(--color-accent) 40%, black);
-    --color-accent-darker: color-mix(in srgb, var(--color-accent) 30%, black);
+    --color-accent-dark: color-mix(in srgb, var(--color-accent) 20%, black);
+    --color-accent-darker: color-mix(in srgb, var(--color-accent) 10%, black);
     --color-accent-light: color-mix(in srgb, var(--color-accent) 60%, white);
 
     /* UI surfaces */
@@ -277,3 +277,4 @@ panel[type="arrow"] toolbarbutton:hover {
 #unified-extensions-panel .unified-extensions-item:hover {
     background-color: var(--color-panel-hover) !important;
 }
+
