@@ -208,13 +208,33 @@
 /* =======================================================
    Sidebar
    ======================================================= */
-#sidebar-box {
-    background-color: var(--color-canvas) !important;
+#sidebar-box,
+#sidebar,
+#sidebar-content,
+#sidebar-header,
+#sidebar-title,
+#sidebar-title-container,
+#sidebar-search-container,
+#sidebar-browser,
+sidebar {
+    background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
 }
 
-#sidebar-search-container {
+#sidebar-title-container,
+#sidebar-header {
     background-color: var(--color-toolbar-bg) !important;
+}
+
+#vertical-tabs-container,
+.vertical-tabs-container,
+.vertical-tabs-sidebar,
+#TabsSidebar,
+tabs[orient="vertical"],
+tab[orient="vertical"],
+#sidebar-tabs-container {
+    background-color: var(--color-toolbar-bg) !important;
+    color: var(--color-text) !important;
 }
 
 /* =======================================================
