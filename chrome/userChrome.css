@@ -8,8 +8,8 @@
     --color-text: CanvasText;
 
     /* Derived accent colors */
-    --color-accent-dark: color-mix(in srgb, var(--color-accent) 20%, black);
-    --color-accent-darker: color-mix(in srgb, var(--color-accent) 10%, black);
+    --color-accent-dark: color-mix(in srgb, var(--color-accent) 40%, black);
+    --color-accent-darker: color-mix(in srgb, var(--color-accent) 30%, black);
     --color-accent-light: color-mix(in srgb, var(--color-accent) 60%, white);
 
     /* UI surfaces */
@@ -32,7 +32,7 @@
     --color-addon-hover: var(--color-accent);
 
     /* Radius */
-    --radius: 22px;
+    --radius: 15px;
 }
 
 /* =======================================================
@@ -107,12 +107,7 @@
     color: var(--color-text) !important;
 }
 
-toolbarspring {
-    display: none !important;
-}
-
-#main-window:not([privatebrowsingmode])
-:is(#urlbar-search-mode-indicator, #urlbar-background) {
+#main-window:not([privatebrowsingmode]) :is(#urlbar-search-mode-indicator, #urlbar-background) {
     background-color: var(--color-accent-light) !important;
 }
 
@@ -130,16 +125,71 @@ toolbarspring {
 /* =======================================================
    URL Bar Results
    ======================================================= */
-:root[lwtheme]:not([privatebrowsingmode])
-#urlbar .urlbarView-row-inner[selected] {
+#urlbar-results,
+.urlbarView,
+.urlbarView-body,
+.urlbarView-inner,
+.urlbarView-contents {
+    background-color: var(--color-panel-bg) !important;
+    background: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+    border-color: var(--color-panel-bg) !important;
+    outline-color: var(--color-panel-bg) !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    --panel-border-color: var(--color-panel-bg);
+    --arrowpanel-background: var(--color-panel-bg);
+}
+
+.urlbarView-row {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+.urlbarView-row:hover,
+.urlbarView-row[selected] {
+    background-color: var(--color-panel-hover) !important;
+}
+
+.urlbarView-row-inner {
+    color: var(--color-text) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-row-inner {
     color: var(--color-accent-light) !important;
+}
+
+.urlbarView-title,
+.urlbarView-url {
+    color: var(--color-text) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-title,
+.urlbarView-row[selected] .urlbarView-url {
+    color: var(--color-accent-light) !important;
+}
+
+.urlbarView-favicon {
+    fill: var(--color-text) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-favicon {
     fill: var(--color-accent-light) !important;
 }
 
-@media (-moz-content-prefers-color-scheme: light),
-       (prefers-color-scheme: light),
-       (-moz-toolbar-prefers-color-scheme: dark),
-       (prefers-color-scheme: dark) {
+.urlbarView-type-icon {
+    fill: var(--color-text) !important;
+}
+
+.urlbarView-separator {
+    background-color: var(--color-panel-separator) !important;
+}
+
+.urlbarView-dynamic-icons {
+    fill: var(--color-text) !important;
+}
+
+@media (prefers-color-scheme: dark) {
     #main-window:not([privatebrowsingmode])
     :is(#urlbar, #urlbar-background, #searchbar) {
         color: var(--color-accent-light) !important;
@@ -278,3 +328,185 @@ panel[type="arrow"] toolbarbutton:hover {
     background-color: var(--color-panel-hover) !important;
 }
 
+/* =======================================================
+   Downloads Panel
+   ======================================================= */
+#downloadsPanel,
+#downloadsPanel .panel-subview-body,
+#downloadsPanel-mainView,
+#downloadsPanel-list {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#downloadsPanel .download-state {
+    background-color: transparent !important;
+}
+
+#downloadsPanel .downloadMainView {
+    background-color: var(--color-panel-bg) !important;
+}
+
+#downloadsPanel .downloadItem,
+#downloadsPanel richlistitem,
+#downloadsPanel .download {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+#downloadsPanel .downloadItem:hover,
+#downloadsPanel richlistitem:hover,
+#downloadsPanel .download:hover {
+    background-color: var(--color-panel-hover) !important;
+}
+
+#downloadsPanel #downloadsFooter {
+    background-color: var(--color-toolbar-bg) !important;
+}
+
+#downloadsPanel .downloadTarget,
+#downloadsPanel .downloadDetails,
+#downloadsPanel .downloadTypeIcon,
+#downloadsPanel .downloadProgress,
+#downloadsPanel .downloadProgressReport {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+/* =======================================================
+   Library Menu
+   ======================================================= */
+#libraryDownloads,
+#libraryDownloads .panel-subview-body {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#libraryDownloads toolbarbutton {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+#libraryDownloads toolbarbutton:hover {
+    background-color: var(--color-panel-hover) !important;
+}
+
+/* =======================================================
+   Panel Items (Generic)
+   ======================================================= */
+:root {
+    --panel-border-color: var(--color-panel-bg) !important;
+    --panel-box-shadow: none !important;
+    --arrowpanel-background: var(--color-panel-bg) !important;
+    --arrowpanel-border-color: var(--color-panel-bg) !important;
+}
+
+panel,
+panel[type="arrow"],
+panel[side="top"],
+panel[side="bottom"],
+panel[side="left"],
+panel[side="right"],
+menupopup,
+#downloadsPanel,
+#libraryDownloads,
+#unified-extensions-panel,
+#appMenu-popup,
+#urlbar-results,
+.panel-arrow,
+.panel-arrowcontent,
+.panel-header,
+.panel-body,
+.popup-panel,
+#main-popupset {
+    background-color: var(--color-panel-bg) !important;
+    background: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+    border-color: var(--color-panel-bg) !important;
+    outline-color: var(--color-panel-bg) !important;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+.panel-arrow[side="top"]::before,
+.panel-arrow[side="top"]::after,
+.panel-arrow[side="bottom"]::before,
+.panel-arrow[side="bottom"]::after,
+.panel-arrow[side="left"]::before,
+.panel-arrow[side="left"]::after,
+.panel-arrow[side="right"]::before,
+.panel-arrow[side="right"]::after,
+panel[type="arrow"]::before,
+panel[type="arrow"]::after {
+    border-color: transparent !important;
+    background-color: var(--color-panel-bg) !important;
+}
+
+#main-popupset + .panel-background,
+#main-popupset + .panel-arrow {
+    background: transparent !important;
+}
+
+.popup-internalbox,
+.popup-content,
+.popup-overlay,
+.tooltip-panel,
+window[type="tooltip"] {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+panel[role="menu"] menuitem,
+panel[role="menu"] menucooard,
+panel[role="dialog"] toolbarbutton,
+menupopup menuitem,
+menupopup menucooard {
+    background-color: transparent !important;
+    color: var(--color-text) !important;
+}
+
+panel[role="menu"] menuitem:hover,
+panel[role="dialog"] toolbarbutton:hover,
+menupopup menuitem:hover {
+    background-color: var(--color-panel-hover) !important;
+}
+
+/* =======================================================
+   Account/Profile Popup
+   ======================================================= */
+#fxa-toolbar-menu-button + menupopup,
+#fxa-avatar-synchable,
+.fxa-profile-image,
+.fxa-menu-container,
+#fxa-menu-header,
+#sync-syncnow-item,
+#sync-setup,
+#sync-unverified-item,
+#appMenu-fxa-container,
+#appMenu-sync,
+#appMenu-newtab-container {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#fxa-menu-header:hover,
+.fxa-profile-image:hover,
+#fxa-avatar-synchable:hover,
+#sync-syncnow-item:hover,
+#sync-setup:hover,
+#appMenu-fxa-container:hover,
+#appMenu-sync:hover {
+    background-color: var(--color-panel-hover) !important;
+}
+
+/* Sync Button in Toolbar */
+#sync-button,
+#sync-button .toolbarbutton-icon {
+    background-color: var(--color-panel-bg) !important;
+    color: var(--color-text) !important;
+}
+
+#sync-button:hover {
+    background-color: var(--color-panel-hover) !important;
+}
