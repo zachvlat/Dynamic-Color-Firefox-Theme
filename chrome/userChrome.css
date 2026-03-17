@@ -8,7 +8,7 @@
     --color-text: CanvasText;
 
     /* Derived accent colors */
-    --color-accent-dark: color-mix(in srgb, var(--color-accent) 40%, black);
+    --color-accent-dark: color-mix(in srgb, var(--color-accent) 50%, black);
     --color-accent-darker: color-mix(in srgb, var(--color-accent) 30%, black);
     --color-accent-light: color-mix(in srgb, var(--color-accent) 60%, white);
 
@@ -419,6 +419,14 @@ panel[type="arrow"] toolbarbutton:hover {
     --panel-box-shadow: none !important;
     --arrowpanel-background: var(--color-panel-bg) !important;
     --arrowpanel-border-color: var(--color-panel-bg) !important;
+}
+
+/* Autoscroll (Middle Mouse) Overlay */
+#autoscroller {
+    background-color: transparent !important;
+}
+#autoscroller::before {
+    opacity: 0.5 !important;
 }
 
 panel,
