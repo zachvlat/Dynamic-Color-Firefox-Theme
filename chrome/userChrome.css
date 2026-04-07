@@ -33,6 +33,55 @@
 
     /* Radius */
     --radius: 15px;
+
+    /* Fix shadows and borders - CSS variables */
+    --panel-box-shadow: none !important;
+    --panel-shadow: none !important;
+    --arrowpanel-background: var(--color-panel-bg);
+    --arrowpanel-border-color: var(--color-panel-bg);
+    --panel-border-radius: var(--radius) !important;
+    --arrowpanel-border-radius: var(--radius) !important;
+    --panel-border-color: transparent;
+    --panel-background: transparent !important;
+}
+
+/* =======================================================
+   Remove default panel styling (Fixes the "extra window")
+   ======================================================= */
+panel, menupopup, dialog, .popup {
+    -moz-appearance: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* The outer panel container that creates the "extra window" */
+.panel-background, 
+.panel-arrowcontent,
+.panel-arrowbox,
+.panel-arrow {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* The actual content area */
+.panel-internal,
+.popup-internalbox,
+.webextension-popup-browser {
+    background-color: var(--color-panel-bg) !important;
+    border-radius: var(--radius) !important;
+    border: none !important;
+}
+
+/* Catch any remaining Firefox native panel styling */
+:-moz-any(panel, menupopup) > .panel-arrowbox,
+:-moz-any(panel, menupopup) > .panel-arrowcontent,
+:-moz-any(panel, menupopup) > .panel-background {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* =======================================================
@@ -133,12 +182,8 @@
     background-color: var(--color-panel-bg) !important;
     background: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
-    border-color: var(--color-panel-bg) !important;
-    outline-color: var(--color-panel-bg) !important;
-    box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    --panel-border-color: var(--color-panel-bg);
-    --arrowpanel-background: var(--color-panel-bg);
+    border: none !important;
+    border-radius: var(--radius) !important;
 }
 
 .urlbarView-row {
@@ -252,6 +297,7 @@ toolbar {
 #appMenu-popup .panel-subview-body {
     background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
+    border-radius: var(--radius) !important;
 }
 
 #appMenu-popup toolbarbutton {
@@ -275,6 +321,7 @@ panel[type="arrow"],
 #content-area-contextmenu {
     background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
+    border-radius: var(--radius) !important;
 }
 
 menupopup menuitem,
@@ -336,6 +383,7 @@ panel[type="arrow"] toolbarbutton:hover {
 #unified-extensions-panel {
     background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
+    border-radius: var(--radius) !important;
 }
 
 #unified-extensions-view toolbarbutton,
@@ -357,6 +405,7 @@ panel[type="arrow"] toolbarbutton:hover {
 #downloadsPanel-list {
     background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
+    border-radius: var(--radius) !important;
 }
 
 #downloadsPanel .download-state {
@@ -400,6 +449,7 @@ panel[type="arrow"] toolbarbutton:hover {
 #libraryDownloads .panel-subview-body {
     background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
+    border-radius: var(--radius) !important;
 }
 
 #libraryDownloads toolbarbutton {
@@ -429,80 +479,34 @@ panel[type="arrow"] toolbarbutton:hover {
     opacity: 0.5 !important;
 }
 
+/* Generic panel styling */
 panel,
 panel[type="arrow"],
-panel[side="top"],
-panel[side="bottom"],
-panel[side="left"],
-panel[side="right"],
 menupopup,
 #downloadsPanel,
 #libraryDownloads,
 #unified-extensions-panel,
 #appMenu-popup,
-#urlbar-results,
-.panel-arrow,
-.panel-arrowcontent,
-.panel-header,
-.panel-body,
-.popup-panel,
-#main-popupset {
+#urlbar-results {
     background-color: var(--color-panel-bg) !important;
-    background: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
-    border-color: var(--color-panel-bg) !important;
-    outline-color: var(--color-panel-bg) !important;
+    border: none !important;
+    border-radius: var(--radius) !important;
     box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    text-shadow: none !important;
 }
 
-.panel-arrow[side="top"]::before,
-.panel-arrow[side="top"]::after,
-.panel-arrow[side="bottom"]::before,
-.panel-arrow[side="bottom"]::after,
-.panel-arrow[side="left"]::before,
-.panel-arrow[side="left"]::after,
-.panel-arrow[side="right"]::before,
-.panel-arrow[side="right"]::after,
-panel[type="arrow"]::before,
-panel[type="arrow"]::after {
-    border-color: transparent !important;
-    background-color: var(--color-panel-bg) !important;
-}
-
-#main-popupset + .panel-background,
-#main-popupset + .panel-arrow {
-    background: transparent !important;
-}
-
+/* Popup content areas */
 .popup-internalbox,
 .popup-content,
-.popup-overlay,
 .tooltip-panel,
 window[type="tooltip"] {
     background-color: var(--color-panel-bg) !important;
     color: var(--color-text) !important;
+    border: none !important;
+    border-radius: var(--radius) !important;
 }
 
-panel[role="menu"] menuitem,
-panel[role="menu"] menucooard,
-panel[role="dialog"] toolbarbutton,
-menupopup menuitem,
-menupopup menucooard {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-panel[role="menu"] menuitem:hover,
-panel[role="dialog"] toolbarbutton:hover,
-menupopup menuitem:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-/* =======================================================
-   Account/Profile Popup
-   ======================================================= */
+/* Account/Profile Popup */
 #fxa-toolbar-menu-button + menupopup,
 #fxa-avatar-synchable,
 .fxa-profile-image,
@@ -537,4 +541,80 @@ menupopup menuitem:hover {
 
 #sync-button:hover {
     background-color: var(--color-panel-hover) !important;
+}
+
+/* =======================================================
+   EXTREME FIX: Remove borders/shadows from extension popups
+   ======================================================= */
+
+/* Target the main panel of any extension popup */
+panel[type="arrow"]:is([panelid*="webextension"], [panelid*="extension"], [panelid*="popup"]) {
+    -moz-appearance: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    --panel-border-color: transparent !important;
+    --panel-shadow: none !important;
+    --panel-box-shadow: none !important;
+}
+
+/* The arrow container */
+panel[type="arrow"] .panel-arrowbox,
+panel[type="arrow"] .panel-arrow {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* The content wrapper */
+panel[type="arrow"] .panel-arrowcontent {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: var(--radius) !important;
+    padding: 0 !important;
+}
+
+/* The actual extension iframe */
+.webextension-popup-browser {
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: var(--color-panel-bg) !important;
+    border-radius: var(--radius) !important;
+}
+
+/* Any other possible containers */
+.webextension-popup-stack,
+.popup-internalbox,
+.popup-content {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Final nuclear option - catch all panels */
+panel, menupopup {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* NUCLEAR OPTION: Remove all borders, shadows, outlines from every element */
+* {
+    border: none !important;
+    border-style: none !important;
+    border-width: 0 !important;
+    outline: none !important;
+    outline-style: none !important;
+    outline-width: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -moz-appearance: none !important;
+}
+
+/* But restore borders for separators (optional) */
+.menuseparator, .panel-separator {
+    border-top: 1px solid var(--color-panel-separator) !important;
 }
