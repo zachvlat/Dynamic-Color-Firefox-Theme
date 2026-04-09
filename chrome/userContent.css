@@ -1,0 +1,89 @@
+/* Minimal content styles - AccentColor based */
+
+/* System accent color for web content */
+:root{
+  --accent: AccentColor;
+  --accent-alpha-15: color-mix(in srgb, AccentColor 15%, transparent);
+  --accent-alpha-20: color-mix(in srgb, AccentColor 20%, transparent);
+  --text-primary: color-mix(in srgb, AccentColor 90%, black);
+  --text-secondary: color-mix(in srgb, AccentColor 70%, black);
+  --border-color: color-mix(in srgb, AccentColor 25%, black);
+  --bg-primary: color-mix(in srgb, AccentColor 12%, #1a1a1a);
+  --bg-secondary: color-mix(in srgb, AccentColor 8%, #1e1e1e);
+  --bg-tertiary: color-mix(in srgb, AccentColor 15%, #252525);
+  --bg-darker: color-mix(in srgb, AccentColor 5%, #0d0d0d);
+}
+
+/* Scrollbar styling for web pages */
+*{
+  scrollbar-color: var(--accent-alpha-20) transparent !important;
+}
+
+/* Focus outlines */
+:focus-visible{
+  outline: 2px solid AccentColor !important;
+  outline-offset: 2px !important;
+}
+
+/* Firefox Home / New Tab page */
+@-moz-document url("about:home"), url("about:newtab"), url("about:blank"), url("about:privatebrowsing") {
+  body {
+    background-color: var(--bg-darker) !important;
+  }
+  
+  /* Main content area */
+  .main-content,
+  .search-container,
+  .topic {
+    background-color: var(--bg-darker) !important;
+  }
+  
+  /* Search box */
+  .search-handoff-button,
+  .search-handoff-input,
+  .search-input,
+  .fake-textbox,
+  .fake-editable {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+  
+  /* Search button container */
+  .search-handoff-button {
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--border-color) !important;
+  }
+  
+  .search-handoff-button .fake-textbox {
+    color: var(--text-secondary) !important;
+  }
+  
+  /* Top sites */
+  .top-sites .top-site-inner,
+  .top-site-outer {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  .top-sites-list .top-site-title {
+    color: var(--text-primary) !important;
+  }
+  
+  /* Cards */
+  .card-outer,
+  .section-card {
+    background-color: var(--bg-secondary) !important;
+  }
+  
+  /* Headers, labels */
+  .section-header,
+  .topic-header,
+  .arrangement-section-header {
+    color: var(--text-primary) !important;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: var(--bg-darker) !important;
+  }
+}

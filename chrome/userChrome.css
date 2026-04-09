@@ -1,620 +1,116 @@
-/* =======================================================
-   Root Variables (ALL COLORS LIVE HERE)
-   ======================================================= */
-:root {
-    /* Base system colors */
-    --color-accent: AccentColor;
-    --color-canvas: Canvas;
-    --color-text: CanvasText;
+/* Minimal Firefox Theme - Based on System AccentColor */
+
+/* Load minimal/modern styles first */
+@import url(chrome/compact_proton.css);
+@import url(chrome/minimal_toolbarbuttons.css);
+@import url(chrome/minimal_text_fields.css);
+@import url(chrome/rounded_menupopups.css);
+@import url(chrome/blank_page_background.css);
+@import url(chrome/non_floating_sharp_tabs.css);
+
+/* Color variables derived from AccentColor */
+:root{
+  /* Base colors from AccentColor */
+  --accent: AccentColor;
+  --accent-darker: color-mix(in srgb, AccentColor 70%, black);
+  --accent-lighter: color-mix(in srgb, AccentColor 85%, white);
+  --accent-alpha-15: color-mix(in srgb, AccentColor 15%, transparent);
+  --accent-alpha-20: color-mix(in srgb, AccentColor 20%, transparent);
+  --accent-alpha-30: color-mix(in srgb, AccentColor 30%, transparent);
+  
+  /* Background colors */
+  --bg-primary: color-mix(in srgb, AccentColor 12%, #1a1a1a);
+  --bg-secondary: color-mix(in srgb, AccentColor 8%, #1e1e1e);
+  --bg-tertiary: color-mix(in srgb, AccentColor 15%, #252525);
+  --bg-darker: color-mix(in srgb, AccentColor 5%, #0d0d0d);
+  
+  /* Text colors */
+  --text-primary: color-mix(in srgb, AccentColor 90%, white);
+  --text-secondary: color-mix(in srgb, AccentColor 60%, white);
+  --text-muted: color-mix(in srgb, AccentColor 40%, white);
+  
+  /* Border */
+  --border-color: color-mix(in srgb, AccentColor 25%, transparent);
+  
+  /* Apply to Firefox UI */
+  --arrowpanel-background: var(--bg-secondary) !important;
+  --arrowpanel-border-color: var(--border-color) !important;
+  --arrowpanel-color: var(--text-primary) !important;
+  
+  --toolbar-bgcolor: var(--bg-darker) !important;
+  --lwt-accent-color: var(--accent) !important;
+  --lwt-accent-color-inactive: var(--accent-darker) !important;
+  
+  --tab-selected-bgcolor: var(--bg-tertiary) !important;
+  --lwt-text-color: var(--text-primary) !important;
+  --lwt-selected-tab-background-color: var(--bg-secondary) !important;
+  
+  --toolbarbutton-icon-fill: var(--text-secondary) !important;
+  --lwt-toolbarbutton-hover-background: var(--accent-alpha-15) !important;
+  --lwt-toolbarbutton-active-background: var(--accent-alpha-30) !important;
+  
+  --toolbar-field-border-color: var(--border-color) !important;
+  --toolbar-field-focus-border-color: var(--accent) !important;
+  --toolbar-field-background-color: var(--bg-primary) !important;
+  --toolbar-field-focus-background-color: var(--bg-tertiary) !important;
+  --toolbar-field-color: var(--text-primary) !important;
+  --toolbar-field-focus-color: var(--text-primary) !important;
+  
+  --lwt-sidebar-background-color: var(--bg-primary) !important;
+  --lwt-sidebar-text-color: var(--text-primary) !important;
+}
+
+/* Tabs toolbar line */
+#navigator-toolbox{ --lwt-tabs-border-color: var(--border-color) !important; }
+#tabbrowser-tabs{ --lwt-tab-line-color: var(--accent) !important; }
+
+/* Sidebar */
+#sidebar-box{ --sidebar-background-color: var(--bg-primary) !important; }
+
+/* Compact tab padding */
+#tabbrowser-tabs{
+  --inline-tab-padding: 8px !important;
+  --tab-min-height: 36px !important;
+}
+
+/* Tab bar background */
+#TabsToolbar{
+  background-color: var(--bg-primary) !important;
+}
+
+.tab-background{
+  background-color: transparent !important;
+}
+
+.tabbrowser-tab[selected] .tab-background{
+  background-color: var(--bg-tertiary) !important;
+}
+
+.tabbrowser-tab:not([selected]) .tab-background{
+  background-color: transparent !important;
+}
+
+/* Minimal URL bar styling */
+#urlbar{
+  border-radius: 6px !important;
+}
+
+/* Rounded buttons/inputs */
+input, button, toolbarbutton{
+  border-radius: 4px !important;
+}
 
-    /* Derived accent colors */
-    --color-accent-dark: color-mix(in srgb, var(--color-accent) 50%, black);
-    --color-accent-darker: color-mix(in srgb, var(--color-accent) 30%, black);
-    --color-accent-light: color-mix(in srgb, var(--color-accent) 60%, white);
-
-    /* UI surfaces */
-    --color-navbar-bg: var(--color-accent-dark);
-    --color-toolbar-bg: var(--color-accent-darker);
-    --color-toolbar-hover: var(--color-accent);
-    --color-toolbar-header: var(--color-accent-light);
-
-    --color-tab-bg: var(--color-accent-darker);
-    --color-tab-selected-bg: var(--color-accent);
-
-    --color-urlbar-bg: var(--color-canvas);
-    --color-urlbar-focused-bg: var(--color-accent-darker);
-
-    --color-panel-bg: var(--color-accent-darker);
-    --color-panel-hover: var(--color-accent);
-    --color-panel-separator: var(--color-accent-light);
-
-    --color-addon-bg: var(--color-accent-light);
-    --color-addon-hover: var(--color-accent);
-
-    /* Radius */
-    --radius: 15px;
-
-    /* Fix shadows and borders - CSS variables */
-    --panel-box-shadow: none !important;
-    --panel-shadow: none !important;
-    --arrowpanel-background: var(--color-panel-bg);
-    --arrowpanel-border-color: var(--color-panel-bg);
-    --panel-border-radius: var(--radius) !important;
-    --arrowpanel-border-radius: var(--radius) !important;
-    --panel-border-color: transparent;
-    --panel-background: transparent !important;
-}
-
-/* =======================================================
-   Remove default panel styling (Fixes the "extra window")
-   ======================================================= */
-panel, menupopup, dialog, .popup {
-    -moz-appearance: none !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* The outer panel container that creates the "extra window" */
-.panel-background, 
-.panel-arrowcontent,
-.panel-arrowbox,
-.panel-arrow {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* The actual content area */
-.panel-internal,
-.popup-internalbox,
-.webextension-popup-browser {
-    background-color: var(--color-panel-bg) !important;
-    border-radius: var(--radius) !important;
-    border: none !important;
-}
-
-/* Catch any remaining Firefox native panel styling */
-:-moz-any(panel, menupopup) > .panel-arrowbox,
-:-moz-any(panel, menupopup) > .panel-arrowcontent,
-:-moz-any(panel, menupopup) > .panel-background {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* =======================================================
-   Navigation Bar
-   ======================================================= */
-#nav-bar {
-    background-color: var(--color-navbar-bg) !important;
-    color: var(--color-text) !important;
-}
-
-/* =======================================================
-   Personal Toolbar (Bookmarks Bar)
-   ======================================================= */
-#PersonalToolbar {
-    background-color: var(--color-navbar-bg) !important;
-    color: var(--color-text) !important;
-}
-
-/* =======================================================
-   Tab Bar
-   ======================================================= */
-#TabsToolbar {
-    background-color: var(--color-tab-bg) !important;
-    color: var(--color-text) !important;
-}
-
-/* Individual Tabs */
-.tabbrowser-tab {
-    border-radius: var(--radius) !important;
-    overflow: hidden !important;
-}
-
-/* Tab Backgrounds */
-.tab-background[selected] {
-    background-color: var(--color-tab-selected-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-.tab-background:not([selected]) {
-    background-color: var(--color-tab-bg) !important;
-}
-
-/* Selected Tab Line */
-.tab-line[selected] {
-    background-color: var(--color-tab-selected-bg) !important;
-}
-
-/* =======================================================
-   URL Bar
-   ======================================================= */
-#urlbar,
-#urlbar-container {
-    border-radius: var(--radius) !important;
-    overflow: hidden !important;
-    flex-grow: 1 !important;
-}
-
-#urlbar-background {
-    background-color: var(--color-urlbar-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-#urlbar-input {
-    color: var(--color-text) !important;
-}
-
-#urlbar:is([focused], [focus-within]) #urlbar-background,
-#urlbar:is([focused], [focus-within]) .urlbar-input-container {
-    background-color: var(--color-urlbar-focused-bg) !important;
-    color: var(--color-text) !important;
-}
-
-#main-window:not([privatebrowsingmode]) :is(#urlbar-search-mode-indicator, #urlbar-background) {
-    background-color: var(--color-accent-light) !important;
-}
-
-/* Search Bar */
-#searchbar .searchbar-textbox {
-    background-color: var(--color-toolbar-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-#searchbar:is([focused]) .searchbar-textbox {
-    background-color: var(--color-accent) !important;
-}
-
-/* =======================================================
-   URL Bar Results
-   ======================================================= */
-#urlbar-results,
-.urlbarView,
-.urlbarView-body,
-.urlbarView-inner,
-.urlbarView-contents {
-    background-color: var(--color-panel-bg) !important;
-    background: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border: none !important;
-    border-radius: var(--radius) !important;
-}
-
-.urlbarView-row {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-.urlbarView-row:hover,
-.urlbarView-row[selected] {
-    background-color: var(--color-panel-hover) !important;
-}
-
-.urlbarView-row-inner {
-    color: var(--color-text) !important;
-}
-
-.urlbarView-row[selected] .urlbarView-row-inner {
-    color: var(--color-accent-light) !important;
-}
-
-.urlbarView-title,
-.urlbarView-url {
-    color: var(--color-text) !important;
-}
-
-.urlbarView-row[selected] .urlbarView-title,
-.urlbarView-row[selected] .urlbarView-url {
-    color: var(--color-accent-light) !important;
-}
-
-.urlbarView-favicon {
-    fill: var(--color-text) !important;
-}
-
-.urlbarView-row[selected] .urlbarView-favicon {
-    fill: var(--color-accent-light) !important;
-}
-
-.urlbarView-type-icon {
-    fill: var(--color-text) !important;
-}
-
-.urlbarView-separator {
-    background-color: var(--color-panel-separator) !important;
-}
-
-.urlbarView-dynamic-icons {
-    fill: var(--color-text) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-    #main-window:not([privatebrowsingmode])
-    :is(#urlbar, #urlbar-background, #searchbar) {
-        color: var(--color-accent-light) !important;
-        fill: var(--color-accent-light) !important;
-    }
-}
-
-/* =======================================================
-   Browser Content Area
-   ======================================================= */
-.browser-container {
-    background-color: var(--color-canvas) !important;
-    color: var(--color-text) !important;
-}
-
-/* =======================================================
-   Sidebar
-   ======================================================= */
-#sidebar-box,
-#sidebar,
-#sidebar-content,
-#sidebar-header,
-#sidebar-title,
-#sidebar-title-container,
-#sidebar-search-container,
-#sidebar-browser,
-sidebar {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-}
-
-#sidebar-title-container,
-#sidebar-header {
-    background-color: var(--color-toolbar-bg) !important;
-}
-
-#vertical-tabs-container,
-.vertical-tabs-container,
-.vertical-tabs-sidebar,
-#TabsSidebar,
-tabs[orient="vertical"],
-tab[orient="vertical"],
-#sidebar-tabs-container {
-    background-color: var(--color-toolbar-bg) !important;
-    color: var(--color-text) !important;
-}
-
-/* =======================================================
-   Toolbars
-   ======================================================= */
-toolbar {
-    background-color: var(--color-toolbar-bg) !important;
-    color: var(--color-text) !important;
-}
-
-/* =======================================================
-   App Menu (Hamburger Menu)
-   ======================================================= */
-#appMenu-popup,
-#appMenu-popup .panel-subview-body {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-#appMenu-popup toolbarbutton {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-#appMenu-popup toolbarbutton:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-#appMenu-popup .panel-subview-header {
-    background-color: var(--color-toolbar-header) !important;
-}
-
-/* =======================================================
-   Context Menus
-   ======================================================= */
-menupopup,
-panel[type="arrow"],
-#content-area-contextmenu {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-menupopup menuitem,
-panel[type="arrow"] toolbarbutton {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-menupopup menuitem:hover,
-panel[type="arrow"] toolbarbutton:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-.menuseparator,
-.panel-separator {
-    border-color: var(--color-panel-separator) !important;
-}
-
-/* =======================================================
-   Add-ons Manager (about:addons)
-   ======================================================= */
-#addons-page {
-    background-color: var(--color-canvas) !important;
-    color: var(--color-text) !important;
-}
-
-#addons-page .page-header,
-#addons-page .sidebar {
-    background-color: var(--color-toolbar-bg) !important;
-}
-
-#addons-page .category,
-#addons-page .card,
-#addons-page .addon-detail {
-    background-color: var(--color-addon-bg) !important;
-}
-
-#addons-page .category[selected],
-#addons-page .category:hover,
-#addons-page .card:hover {
-    background-color: var(--color-addon-hover) !important;
-}
-
-#addons-page button,
-#addons-page .more-options-button {
-    background-color: var(--color-toolbar-bg) !important;
-    color: var(--color-text) !important;
-}
-
-#addons-page button:hover,
-#addons-page .more-options-button:hover {
-    background-color: var(--color-addon-hover) !important;
-}
-
-/* =======================================================
-   Unified Extensions Panel
-   ======================================================= */
-#unified-extensions-view,
-#unified-extensions-panel {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-#unified-extensions-view toolbarbutton,
-#unified-extensions-panel .unified-extensions-item {
-    background-color: transparent !important;
-}
-
-#unified-extensions-view toolbarbutton:hover,
-#unified-extensions-panel .unified-extensions-item:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-/* =======================================================
-   Downloads Panel
-   ======================================================= */
-#downloadsPanel,
-#downloadsPanel .panel-subview-body,
-#downloadsPanel-mainView,
-#downloadsPanel-list {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-#downloadsPanel .download-state {
-    background-color: transparent !important;
-}
-
-#downloadsPanel .downloadMainView {
-    background-color: var(--color-panel-bg) !important;
-}
-
-#downloadsPanel .downloadItem,
-#downloadsPanel richlistitem,
-#downloadsPanel .download {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-#downloadsPanel .downloadItem:hover,
-#downloadsPanel richlistitem:hover,
-#downloadsPanel .download:hover {
-    background-color: var(--color-panel-hover) !important;
+/* Subtle accent on focus */
+*:focus-visible{
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px !important;
 }
 
-#downloadsPanel #downloadsFooter {
-    background-color: var(--color-toolbar-bg) !important;
+/* Scrollbar styling */
+scrollbar, *{
+  scrollbar-color: var(--accent-alpha-30) transparent !important;
 }
-
-#downloadsPanel .downloadTarget,
-#downloadsPanel .downloadDetails,
-#downloadsPanel .downloadTypeIcon,
-#downloadsPanel .downloadProgress,
-#downloadsPanel .downloadProgressReport {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-/* =======================================================
-   Library Menu
-   ======================================================= */
-#libraryDownloads,
-#libraryDownloads .panel-subview-body {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border-radius: var(--radius) !important;
-}
-
-#libraryDownloads toolbarbutton {
-    background-color: transparent !important;
-    color: var(--color-text) !important;
-}
-
-#libraryDownloads toolbarbutton:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-/* =======================================================
-   Panel Items (Generic)
-   ======================================================= */
-:root {
-    --panel-border-color: var(--color-panel-bg) !important;
-    --panel-box-shadow: none !important;
-    --arrowpanel-background: var(--color-panel-bg) !important;
-    --arrowpanel-border-color: var(--color-panel-bg) !important;
-}
-
-/* Autoscroll (Middle Mouse) Overlay */
-#autoscroller {
-    background-color: transparent !important;
-}
-#autoscroller::before {
-    opacity: 0.5 !important;
-}
-
-/* Generic panel styling */
-panel,
-panel[type="arrow"],
-menupopup,
-#downloadsPanel,
-#libraryDownloads,
-#unified-extensions-panel,
-#appMenu-popup,
-#urlbar-results {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border: none !important;
-    border-radius: var(--radius) !important;
-    box-shadow: none !important;
-}
-
-/* Popup content areas */
-.popup-internalbox,
-.popup-content,
-.tooltip-panel,
-window[type="tooltip"] {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-    border: none !important;
-    border-radius: var(--radius) !important;
-}
-
-/* Account/Profile Popup */
-#fxa-toolbar-menu-button + menupopup,
-#fxa-avatar-synchable,
-.fxa-profile-image,
-.fxa-menu-container,
-#fxa-menu-header,
-#sync-syncnow-item,
-#sync-setup,
-#sync-unverified-item,
-#appMenu-fxa-container,
-#appMenu-sync,
-#appMenu-newtab-container {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-}
-
-#fxa-menu-header:hover,
-.fxa-profile-image:hover,
-#fxa-avatar-synchable:hover,
-#sync-syncnow-item:hover,
-#sync-setup:hover,
-#appMenu-fxa-container:hover,
-#appMenu-sync:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-/* Sync Button in Toolbar */
-#sync-button,
-#sync-button .toolbarbutton-icon {
-    background-color: var(--color-panel-bg) !important;
-    color: var(--color-text) !important;
-}
-
-#sync-button:hover {
-    background-color: var(--color-panel-hover) !important;
-}
-
-/* =======================================================
-   EXTREME FIX: Remove borders/shadows from extension popups
-   ======================================================= */
-
-/* Target the main panel of any extension popup */
-panel[type="arrow"]:is([panelid*="webextension"], [panelid*="extension"], [panelid*="popup"]) {
-    -moz-appearance: none !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    --panel-border-color: transparent !important;
-    --panel-shadow: none !important;
-    --panel-box-shadow: none !important;
-}
-
-/* The arrow container */
-panel[type="arrow"] .panel-arrowbox,
-panel[type="arrow"] .panel-arrow {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* The content wrapper */
-panel[type="arrow"] .panel-arrowcontent {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: var(--radius) !important;
-    padding: 0 !important;
-}
-
-/* The actual extension iframe */
-.webextension-popup-browser {
-    border: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: var(--color-panel-bg) !important;
-    border-radius: var(--radius) !important;
-}
-
-/* Any other possible containers */
-.webextension-popup-stack,
-.popup-internalbox,
-.popup-content {
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* Final nuclear option - catch all panels */
-panel, menupopup {
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* NUCLEAR OPTION: Remove all borders, shadows, outlines from every element */
-* {
-    border: none !important;
-    border-style: none !important;
-    border-width: 0 !important;
-    outline: none !important;
-    outline-style: none !important;
-    outline-width: 0 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    -moz-appearance: none !important;
-}
-
-/* But restore borders for separators (optional) */
-.menuseparator, .panel-separator {
-    border-top: 1px solid var(--color-panel-separator) !important;
+scrollbar thumb{
+  background: var(--accent-alpha-30) !important;
+  border-radius: 3px !important;
 }
