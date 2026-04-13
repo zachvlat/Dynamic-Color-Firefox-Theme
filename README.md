@@ -11,6 +11,30 @@ A minimal dark Firefox theme that dynamically colors the interface using the sys
 4. Save `userChrome.css` & `userContent.css` in the chrome folder
 5. Restart Firefox
 
+## Simpler version
+```bash
+cd %APPDATA%\Mozilla\Firefox\Profiles
+
+mkdir *.default-release\chrome
+
+wget -O *.default-release\chrome\userChrome.css ^
+https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userChrome.css
+
+wget -O *.default-release\chrome\userContent.css ^
+https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userContent.css
+```
+```bash
+cd %APPDATA%\Mozilla\Firefox\Profiles
+
+for /d %i in (*release*) do mkdir "%i\chrome"
+
+for /d %i in (*release*) do wget -O "%i\chrome\userChrome.css" https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userChrome.css
+
+for /d %i in (*release*) do wget -O "%i\chrome\userContent.css" https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userContent.css
+
+for /d %i in (*release*) do wget -O "%i\user.js" https://raw.githubusercontent.com/zachvlat/firefox/refs/heads/main/user.js
+```
+
 ## Examples
 
 <img width="1280" height="720" alt="2025-11-25_14-09" src="/Screenshot_2026-04-09_17-19-14.png" />
