@@ -83,7 +83,7 @@
 }
 
 .tabbrowser-tab[selected] .tab-background{
-  background-color: var(--bg-tertiary) !important;
+  background-color: var(--bg-darker) !important;
 }
 
 .tabbrowser-tab:not([selected]) .tab-background{
