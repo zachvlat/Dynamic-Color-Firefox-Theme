@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs
 ```
 ### Linux (Flatpak)
 ```bash
-cd %APPDATA%\Mozilla\Firefox\Profiles
+cd ./var/org.mozilla.firefox/config/mozilla/profiles
 
 for /d %i in (*release*) do mkdir "%i\chrome"
 
