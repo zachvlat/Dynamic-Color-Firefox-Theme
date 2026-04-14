@@ -12,17 +12,19 @@ A minimal dark Firefox theme that dynamically colors the interface using the sys
 5. Restart Firefox
 
 ## Simpler version
+### Windows
 ```bash
-cd %APPDATA%\Mozilla\Firefox\Profiles
+cd $env:APPDATA\Mozilla\Firefox\profiles\*.default-release
 
 mkdir *.default-release\chrome
 
-wget -O *.default-release\chrome\userChrome.css ^
-https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userChrome.css
+cd chrome
 
-wget -O *.default-release\chrome\userContent.css ^
-https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userContent.css
+wget https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userChrome.css -O userChrome.css
+
+wget https://raw.githubusercontent.com/zachvlat/Dynamic-Color-Firefox-Theme/refs/heads/main/chrome/userContent.css -O userContent
 ```
+### Linux (Flatpak)
 ```bash
 cd %APPDATA%\Mozilla\Firefox\Profiles
 
