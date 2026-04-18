@@ -14,9 +14,9 @@ A minimal dark Firefox theme that dynamically colors the interface using the sys
 ## Simpler version
 ### Windows
 ```bash
-cd $env:APPDATA\Mozilla\Firefox\profiles\*.default-release
+cd $env:APPDATA\Mozilla\Firefox\profiles\*.release
 
-mkdir *.default-release\chrome
+mkdir chrome
 
 cd chrome
 
