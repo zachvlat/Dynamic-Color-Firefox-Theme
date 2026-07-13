@@ -1,81 +1,59 @@
-/* Minimal Firefox Theme - Based on System AccentColor */
-
-/* Load minimal/modern styles first */
-@import url(chrome/compact_proton.css);
-@import url(chrome/minimal_toolbarbuttons.css);
-@import url(chrome/minimal_text_fields.css);
-@import url(chrome/rounded_menupopups.css);
-@import url(chrome/blank_page_background.css);
-@import url(chrome/non_floating_sharp_tabs.css);
-
-/* Color variables derived from AccentColor */
 :root{
-  /* Base colors from AccentColor */
   --accent: AccentColor;
   --accent-darker: color-mix(in srgb, AccentColor 70%, black);
-  --accent-lighter: color-mix(in srgb, AccentColor 85%, white);
-  --accent-alpha-15: color-mix(in srgb, AccentColor 15%, transparent);
-  --accent-alpha-20: color-mix(in srgb, AccentColor 20%, transparent);
-  --accent-alpha-30: color-mix(in srgb, AccentColor 30%, transparent);
-  
-  /* Background colors */
+  --accent-subtle: color-mix(in srgb, AccentColor 30%, transparent);
+  --accent-faint: color-mix(in srgb, AccentColor 20%, transparent);
+
   --bg-primary: color-mix(in srgb, AccentColor 12%, #1a1a1a);
   --bg-secondary: color-mix(in srgb, AccentColor 8%, #1e1e1e);
   --bg-tertiary: color-mix(in srgb, AccentColor 15%, #252525);
   --bg-darker: color-mix(in srgb, AccentColor 5%, #0d0d0d);
-  
-  /* Text colors */
+
   --text-primary: color-mix(in srgb, AccentColor 90%, white);
   --text-secondary: color-mix(in srgb, AccentColor 60%, white);
   --text-muted: color-mix(in srgb, AccentColor 40%, white);
-  
-  /* Border */
+
   --border-color: color-mix(in srgb, AccentColor 25%, transparent);
-  
-  /* Apply to Firefox UI */
+
   --arrowpanel-background: var(--bg-secondary) !important;
   --arrowpanel-border-color: var(--border-color) !important;
   --arrowpanel-color: var(--text-primary) !important;
-  
+
   --toolbar-bgcolor: var(--bg-darker) !important;
   --lwt-accent-color: var(--accent) !important;
   --lwt-accent-color-inactive: var(--accent-darker) !important;
-  
+
   --tab-selected-bgcolor: var(--bg-tertiary) !important;
   --lwt-text-color: var(--text-primary) !important;
   --lwt-selected-tab-background-color: var(--bg-secondary) !important;
-  
+
   --toolbarbutton-icon-fill: var(--text-secondary) !important;
-  --lwt-toolbarbutton-hover-background: var(--accent-alpha-15) !important;
-  --lwt-toolbarbutton-active-background: var(--accent-alpha-30) !important;
-  
+  --lwt-toolbarbutton-hover-background: var(--accent-subtle) !important;
+  --lwt-toolbarbutton-active-background: var(--accent-darker) !important;
+
   --toolbar-field-border-color: var(--border-color) !important;
   --toolbar-field-focus-border-color: var(--accent) !important;
   --toolbar-field-background-color: var(--bg-primary) !important;
   --toolbar-field-focus-background-color: var(--bg-tertiary) !important;
   --toolbar-field-color: var(--text-primary) !important;
   --toolbar-field-focus-color: var(--text-primary) !important;
-  
+
   --lwt-sidebar-background-color: var(--bg-primary) !important;
   --lwt-sidebar-text-color: var(--text-primary) !important;
 }
 
-/* Tabs toolbar line */
 #navigator-toolbox{ --lwt-tabs-border-color: var(--border-color) !important; }
 #tabbrowser-tabs{ --lwt-tab-line-color: var(--accent) !important; }
 
-/* Sidebar */
 #sidebar-box{ --sidebar-background-color: var(--bg-primary) !important; }
 
-/* Compact tab padding */
 #tabbrowser-tabs{
   --inline-tab-padding: 8px !important;
   --tab-min-height: 36px !important;
 }
 
-/* Tab bar background */
 #TabsToolbar{
-  background-color: var(--bg-primary) !important;
+  background-color: var(--accent-darker) !important;
 }
 
 .tab-background{
@@ -90,27 +68,77 @@
   background-color: transparent !important;
 }
 
-/* Minimal URL bar styling */
+:root[sessionrestored] #PersonalToolbar:not(.instant){
+  background-color: var(--bg-primary) !important;
+}
+
+#nav-bar{
+  background-color: var(--bg-primary) !important;
+}
+
+#appMenu-multiView,
+panelmultiview{
+  background-color: var(--accent-darker) !important;
+}
+
+#trust-icon,
+#reader-mode-button-icon,
+.urlbar-icon,
+#star-button{
+  color: AccentColor !important;
+}
+
+.urlbar-input-box {
+  #urlbar & {
+    background-color: var(--bg-primary) !important;
+    border-radius: 5px !important;
+  }
+}
+
 #urlbar{
   border-radius: 6px !important;
 }
 
-/* Rounded buttons/inputs */
+.urlbar-background{
+  border-color: transparent !important;
+}
+
+.button-background{
+  background-color: var(--bg-primary) !important;
+}
+.button-background > img:nth-child(1),
+.button-background > label:nth-child(2){
+  color: AccentColor !important;
+}
+
+.toolbarbutton-animatable-box,
+.toolbarbutton-1{
+  color: inherit !important;
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: AccentColor !important;
+}
+
+.tab-preview-content-main{
+  background-color: AccentColor !important;
+}
+
+.searchmode-switcher-panel-list{
+  background-color: var(--accent-darker) !important;
+}
+
 input, button, toolbarbutton{
   border-radius: 4px !important;
 }
 
-/* Subtle accent on focus */
 *:focus-visible{
   outline: 2px solid var(--accent) !important;
   outline-offset: 2px !important;
 }
 
-/* Scrollbar styling */
 scrollbar, *{
-  scrollbar-color: var(--accent-alpha-30) transparent !important;
+  scrollbar-color: var(--accent-subtle) transparent !important;
 }
 scrollbar thumb{
-  background: var(--accent-alpha-30) !important;
+  background: var(--accent-subtle) !important;
   border-radius: 3px !important;
 }
