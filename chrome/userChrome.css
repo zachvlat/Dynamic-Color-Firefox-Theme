@@ -104,7 +104,7 @@ panelmultiview{
 }
 
 .button-background{
-  background-color: var(--bg-primary) !important;
+  background-color: transparent !important;
 }
 .button-background > img:nth-child(1),
 .button-background > label:nth-child(2){
