@@ -142,3 +142,24 @@ scrollbar thumb{
   background: var(--accent-subtle) !important;
   border-radius: 3px !important;
 }
+
+#tabs-newtab-button > image:nth-child(2) {
+	fill: var(--bg-primary) !important;
+}
+
+#alltabs-button > stack:nth-child(1) > image:nth-child(1) {
+	fill: var(--bg-primary) !important;
+}
+
+.urlbarView-row[selected] {
+  background-color: AccentColor !important;
+  color: white !important;
+}
+
+.urlbarView-row[row-selectable]:not([selected]):hover {
+  background-color: AccentColor !important;
+}
+
+.urlbarView-url {
+  color: white !important;
+}
