@@ -173,7 +173,7 @@ scrollbar thumb{
 
 .urlbarView-row[selected]{
   background-color: var(--c0) !important;
-  color: var(--c1) !important;
+  color: var(--c7) !important;
 }
 
 .urlbarView-row[row-selectable]:not([selected]):hover{
