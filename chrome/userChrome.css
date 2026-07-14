@@ -1,102 +1,107 @@
 :root{
-  --accent: AccentColor;
-  --accent-darker: color-mix(in srgb, AccentColor 70%, black);
-  --accent-subtle: color-mix(in srgb, AccentColor 30%, transparent);
-  --accent-faint: color-mix(in srgb, AccentColor 20%, transparent);
+  --c0: AccentColor;
+  --c1: color-mix(in srgb, AccentColor 90%, white);
+  --c2: color-mix(in srgb, AccentColor 70%, white);
+  --c3: color-mix(in srgb, AccentColor 45%, white);
 
-  --bg-primary: color-mix(in srgb, AccentColor 12%, #1a1a1a);
-  --bg-secondary: color-mix(in srgb, AccentColor 8%, #1e1e1e);
-  --bg-tertiary: color-mix(in srgb, AccentColor 15%, #252525);
-  --bg-darker: color-mix(in srgb, AccentColor 5%, #0d0d0d);
+  --c4: color-mix(in srgb, AccentColor 80%, black);
+  --c5: color-mix(in srgb, AccentColor 60%, black);
+  --c6: color-mix(in srgb, AccentColor 40%, black);
+  --c7: color-mix(in srgb, AccentColor 30%, black);
 
-  --text-primary: color-mix(in srgb, AccentColor 90%, white);
-  --text-secondary: color-mix(in srgb, AccentColor 60%, white);
-  --text-muted: color-mix(in srgb, AccentColor 40%, white);
+  --c8: color-mix(in srgb, AccentColor 25%, transparent);
+  --c9: color-mix(in srgb, AccentColor 10%, transparent);
 
-  --border-color: color-mix(in srgb, AccentColor 25%, transparent);
 
-  --arrowpanel-background: var(--bg-secondary) !important;
-  --arrowpanel-border-color: var(--border-color) !important;
-  --arrowpanel-color: var(--text-primary) !important;
 
-  --toolbar-bgcolor: var(--bg-darker) !important;
-  --lwt-accent-color: var(--accent) !important;
-  --lwt-accent-color-inactive: var(--accent-darker) !important;
+  --arrowpanel-background: var(--c6) !important;
+  --arrowpanel-border-color: var(--c8) !important;
+  --arrowpanel-color: var(--c1) !important;
 
-  --tab-selected-bgcolor: var(--bg-tertiary) !important;
-  --lwt-text-color: var(--text-primary) !important;
-  --lwt-selected-tab-background-color: var(--bg-secondary) !important;
+  --toolbar-bgcolor: var(--c4) !important;
 
-  --toolbarbutton-icon-fill: var(--text-secondary) !important;
-  --lwt-toolbarbutton-hover-background: var(--accent-subtle) !important;
-  --lwt-toolbarbutton-active-background: var(--accent-darker) !important;
+  --lwt-accent-color: var(--c0) !important;
+  --lwt-accent-color-inactive: var(--c5) !important;
 
-  --toolbar-field-border-color: var(--border-color) !important;
-  --toolbar-field-focus-border-color: var(--accent) !important;
-  --toolbar-field-background-color: var(--bg-primary) !important;
-  --toolbar-field-focus-background-color: var(--bg-tertiary) !important;
-  --toolbar-field-color: var(--text-primary) !important;
-  --toolbar-field-focus-color: var(--text-primary) !important;
+  --tab-selected-bgcolor: var(--c6) !important;
+  --lwt-selected-tab-background-color: var(--c6) !important;
 
-  --lwt-sidebar-background-color: var(--bg-primary) !important;
-  --lwt-sidebar-text-color: var(--text-primary) !important;
+  --lwt-text-color: var(--c1) !important;
+
+  --toolbarbutton-icon-fill: var(--c2) !important;
+  --lwt-toolbarbutton-hover-background: var(--c9) !important;
+  --lwt-toolbarbutton-active-background: var(--c5) !important;
+
+  --toolbar-field-background-color: var(--c7) !important;
+  --toolbar-field-focus-background-color: var(--c6) !important;
+  --toolbar-field-border-color: var(--c8) !important;
+  --toolbar-field-focus-border-color: var(--c0) !important;
+  --toolbar-field-color: var(--c1) !important;
+  --toolbar-field-focus-color: var(--c1) !important;
+
+  --lwt-sidebar-background-color: var(--c7) !important;
+  --lwt-sidebar-text-color: var(--c1) !important;
 }
 
-#navigator-toolbox{ --lwt-tabs-border-color: var(--border-color) !important; }
-#tabbrowser-tabs{ --lwt-tab-line-color: var(--accent) !important; }
-
-#sidebar-box{ --sidebar-background-color: var(--bg-primary) !important; }
+#navigator-toolbox{
+  --lwt-tabs-border-color: var(--c8) !important;
+}
 
 #tabbrowser-tabs{
+  --lwt-tab-line-color: var(--c0) !important;
   --inline-tab-padding: 8px !important;
   --tab-min-height: 36px !important;
 }
 
+#sidebar-box{
+  --sidebar-background-color: var(--c7) !important;
+}
+
 #TabsToolbar{
-  background-color: var(--accent-darker) !important;
+  background-color: var(--c5) !important;
 }
 
 .tab-background{
-  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .tabbrowser-tab[selected] .tab-background{
-  background-color: var(--bg-darker) !important;
+  background-color: var(--c7) !important;
 }
 
 .tabbrowser-tab:not([selected]) .tab-background{
-  background-color: transparent !important;
+  background: transparent !important;
 }
 
 :root[sessionrestored] #PersonalToolbar:not(.instant){
-  background-color: var(--bg-primary) !important;
+  background-color: var(--c7) !important;
 }
 
 #nav-bar{
-  background-color: var(--bg-primary) !important;
+  background-color: var(--c7) !important;
 }
 
 #appMenu-multiView,
 panelmultiview{
-  background-color: var(--accent-darker) !important;
+  background-color: var(--c5) !important;
 }
 
 #trust-icon,
 #reader-mode-button-icon,
 .urlbar-icon,
 #star-button{
-  color: AccentColor !important;
-}
-
-.urlbar-input-box {
-  #urlbar & {
-    background-color: var(--bg-primary) !important;
-    border-radius: 5px !important;
-  }
+  color: var(--c0) !important;
 }
 
 #urlbar{
   border-radius: 6px !important;
+}
+
+.urlbar-input-box{
+  #urlbar &{
+    background-color: var(--c7) !important;
+    border-radius: 5px !important;
+  }
 }
 
 .urlbar-background{
@@ -104,62 +109,99 @@ panelmultiview{
 }
 
 .button-background{
-  background-color: transparent !important;
+  background: transparent !important;
 }
-.button-background > img:nth-child(1),
-.button-background > label:nth-child(2){
-  color: AccentColor !important;
+
+.button-background > img,
+.button-background > label{
+  color: var(--c0) !important;
 }
 
 .toolbarbutton-animatable-box,
 .toolbarbutton-1{
   color: inherit !important;
   -moz-context-properties: fill, fill-opacity !important;
-  fill: AccentColor !important;
+  fill: var(--c0) !important;
 }
 
 .tab-preview-content-main{
-  background-color: AccentColor !important;
+  background-color: var(--c0) !important;
 }
 
 .searchmode-switcher-panel-list{
-  background-color: var(--accent-darker) !important;
+  background-color: var(--c5) !important;
 }
 
-input, button, toolbarbutton{
+input,
+button,
+toolbarbutton{
   border-radius: 4px !important;
 }
 
 *:focus-visible{
-  outline: 2px solid var(--accent) !important;
+  outline: 2px solid var(--c0) !important;
   outline-offset: 2px !important;
 }
 
-scrollbar, *{
-  scrollbar-color: var(--accent-subtle) transparent !important;
+:root{
+  scrollbar-color: var(--c8) transparent;
 }
+
 scrollbar thumb{
-  background: var(--accent-subtle) !important;
+  background: var(--c8) !important;
   border-radius: 3px !important;
 }
 
-#tabs-newtab-button > image:nth-child(2) {
-	fill: var(--bg-primary) !important;
+#tabs-newtab-button > image:nth-child(2){
+  fill: var(--c7) !important;
 }
 
-#alltabs-button > stack:nth-child(1) > image:nth-child(1) {
-	fill: var(--bg-primary) !important;
+#alltabs-button > stack:nth-child(1) > image:nth-child(1){
+  fill: var(--c7) !important;
 }
 
-.urlbarView-row[selected] {
-  background-color: AccentColor !important;
-  color: white !important;
+.urlbarView{
+  background-color: var(--c6) !important;
+  color: var(--c1) !important;
+  border: 1px solid var(--c8) !important;
+  border-radius: 8px !important;
 }
 
-.urlbarView-row[row-selectable]:not([selected]):hover {
-  background-color: AccentColor !important;
+.urlbarView-row{
+  color: var(--c1) !important;
 }
 
-.urlbarView-url {
-  color: white !important;
+.urlbarView-row[selected]{
+  background-color: var(--c0) !important;
+  color: var(--c1) !important;
+}
+
+.urlbarView-row[row-selectable]:not([selected]):hover{
+  background-color: var(--c9) !important;
+}
+
+.urlbarView-url{
+  color: var(--c2) !important;
+}
+
+.tabbrowser-tab[selected]{
+  color: var(--c1) !important;
+}
+
+.tabbrowser-tab:not([selected]){
+  color: var(--c3) !important;
+}
+
+toolbarbutton,
+.tab-background,
+.urlbar-background,
+button{
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    color .15s ease;
+}
+
+#urlbar[breakout][breakout-extend] > .urlbar-background {
+    background-color: var(--c6) !important;
 }
