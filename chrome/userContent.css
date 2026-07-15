@@ -14,10 +14,10 @@
   scrollbar-color: var(--accent-faint) transparent !important;
 }
 
-:focus-visible{
+/* :focus-visible{
   outline: 2px solid AccentColor !important;
   outline-offset: 2px !important;
-}
+} */
 
 @-moz-document url("about:home"), url("about:newtab"), url("about:blank"), url("about:privatebrowsing") {
   body {

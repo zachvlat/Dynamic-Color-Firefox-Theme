@@ -172,10 +172,10 @@ toolbarbutton{
   border-radius: var(--radius) !important;
 }
 
-*:focus-visible{
+/* *:focus-visible{
   outline: 2px solid var(--c0) !important;
   outline-offset: 2px !important;
-}
+} */
 
 scrollbar thumb{
   background: var(--c8) !important;
