@@ -1,4 +1,6 @@
 :root{
+  --radius: 3px;
+
   --c0: AccentColor;
   --c1: color-mix(in srgb, AccentColor 90%, white);
   --c2: color-mix(in srgb, AccentColor 70%, white);
@@ -11,8 +13,6 @@
 
   --c8: color-mix(in srgb, AccentColor 25%, transparent);
   --c9: color-mix(in srgb, AccentColor 10%, transparent);
-
-
 
   --arrowpanel-background: var(--c6) !important;
   --arrowpanel-border-color: var(--c8) !important;
@@ -41,6 +41,8 @@
 
   --lwt-sidebar-background-color: var(--c7) !important;
   --lwt-sidebar-text-color: var(--c1) !important;
+
+  scrollbar-color: var(--c8) transparent;
 }
 
 #navigator-toolbox{
@@ -94,13 +96,13 @@ panelmultiview{
 }
 
 #urlbar{
-  border-radius: 6px !important;
+  border-radius: var(--radius) !important;
 }
 
 .urlbar-input-box{
   #urlbar &{
     background-color: var(--c7) !important;
-    border-radius: 5px !important;
+    border-radius: var(--radius) !important;
   }
 }
 
@@ -135,7 +137,7 @@ panelmultiview{
 input,
 button,
 toolbarbutton{
-  border-radius: 4px !important;
+  border-radius: var(--radius) !important;
 }
 
 *:focus-visible{
@@ -143,13 +145,9 @@ toolbarbutton{
   outline-offset: 2px !important;
 }
 
-:root{
-  scrollbar-color: var(--c8) transparent;
-}
-
 scrollbar thumb{
   background: var(--c8) !important;
-  border-radius: 3px !important;
+  border-radius: var(--radius) !important;
 }
 
 #tabs-newtab-button > image:nth-child(2){
@@ -164,7 +162,7 @@ scrollbar thumb{
   background-color: var(--c6) !important;
   color: var(--c1) !important;
   border: 1px solid var(--c8) !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius) !important;
 }
 
 .urlbarView-row{
@@ -202,10 +200,18 @@ button{
     color .15s ease;
 }
 
-#urlbar[breakout][breakout-extend] > .urlbar-background {
-    background-color: var(--c6) !important;
+#urlbar[breakout][breakout-extend] > .urlbar-background{
+  background-color: var(--c6) !important;
 }
 
-#trust-icon-container {
-	background-color: var(--c9) !important;
+#trust-icon-container{
+  background-color: var(--c9) !important;
+}
+
+.blocked-permission-icon {
+	fill: var(--c9) !important;
+}
+
+.permissions-granted-icon {
+	fill: var(--c9) !important;
 }
