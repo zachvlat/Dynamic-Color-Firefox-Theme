@@ -205,3 +205,7 @@ button{
 #urlbar[breakout][breakout-extend] > .urlbar-background {
     background-color: var(--c6) !important;
 }
+
+#trust-icon-container {
+	background-color: var(--c9) !important;
+}
