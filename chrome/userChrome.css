@@ -126,6 +126,37 @@ panelmultiview{
   fill: var(--c0) !important;
 }
 
+.tab-audio-button[soundplaying]::part(button),
+.tab-audio-button[muted]::part(button),
+.tab-audio-button[activemedia-blocked]::part(button){
+  background-color: transparent !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+.tab-audio-button[soundplaying]{
+  background-color: var(--c3) !important;
+  -webkit-mask: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg") center / 16px 16px no-repeat !important;
+  mask: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg") center / 16px 16px no-repeat !important;
+}
+
+.tab-audio-button[muted]{
+  background-color: var(--c3) !important;
+  -webkit-mask: url("chrome://browser/skin/tabbrowser/tab-audio-muted-small.svg") center / 16px 16px no-repeat !important;
+  mask: url("chrome://browser/skin/tabbrowser/tab-audio-muted-small.svg") center / 16px 16px no-repeat !important;
+}
+
+.tab-audio-button[activemedia-blocked]{
+  background-color: var(--c3) !important;
+  -webkit-mask: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-circle-12.svg") center / 16px 16px no-repeat !important;
+  mask: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-circle-12.svg") center / 16px 16px no-repeat !important;
+}
+
+.tab-icon-overlay{
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: var(--c3) !important;
+}
+
 .tab-preview-content-main{
   background-color: var(--c0) !important;
 }
@@ -215,3 +246,4 @@ button{
 .permissions-granted-icon {
 	fill: var(--c9) !important;
 }
+
