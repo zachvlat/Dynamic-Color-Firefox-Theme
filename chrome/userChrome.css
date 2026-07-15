@@ -90,6 +90,7 @@ panelmultiview{
 
 #trust-icon,
 #reader-mode-button-icon,
+.drm-icon,
 .urlbar-icon,
 #star-button{
   color: var(--c0) !important;
