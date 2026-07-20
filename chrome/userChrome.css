@@ -244,7 +244,6 @@ button{
 	fill: var(--c9) !important;
 }
 
-.permissions-granted-icon {
-	fill: var(--c9) !important;
+#permissions-granted-icon {
+    fill: var(--c0) !important;
 }
-
